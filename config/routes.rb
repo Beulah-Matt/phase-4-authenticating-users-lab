@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
   resources :articles, only: [:index, :show]
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  #Creating a login session
+  post "/login", to: "sessions#create"
+
+  #Staying logged in
+  get "/me", to: "users#show"
+
+  #Login out
+  delete "/logout", to: "sessions#destroy"
+  
 end
